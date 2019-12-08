@@ -62,6 +62,12 @@ while [ ! -e /run/slapd/slapd.pid ]; do sleep 5; done
 echo "Adding ppolicy schema..."
 ldapadd -c -Y EXTERNAL -Q -H ldapi:/// -f /etc/ldap/schema/ppolicy.ldif
 
+# Add cn=config password
+echo "dn: olcDatabase={0}config,cn=config
+changeType: modify
+add: OlcRootPW
+OlcRootPW: $(slappasswd -s ${LDAP_ROOTPW})" | ldapadd -Y EXTERNAL -H ldapi:/// 
+
 # process config files (*.ldif) in bootstrap directory (do no process files in subdirectories)
 echo "Add image bootstrap ldif..."
 for f in $(find /etc/ldap/ldif_files -mindepth 1 -maxdepth 1 -type f -name \*.ldif | sort); do
