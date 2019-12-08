@@ -1,0 +1,9 @@
+dn: ou=users,dc=mesesale,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: users
+
+dn: ou=groups,dc=mesesale,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: groups

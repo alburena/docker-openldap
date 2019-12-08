@@ -1,0 +1,17 @@
+dn: cn=admins,ou=groups,dc=mesesale,dc=local
+objectClass: top
+objectClass: posixGroup
+cn: admins
+gidNumber: 30000
+
+dn: cn=guests,ou=groups,dc=mesesale,dc=local
+objectClass: top
+objectClass: posixGroup
+cn: guests
+gidNumber: 30000
+
+dn: cn=users,ou=groups,dc=mesesale,dc=local
+objectClass: top
+objectClass: posixGroup
+cn: users
+gidNumber: 30000
