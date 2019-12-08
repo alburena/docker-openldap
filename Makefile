@@ -1,10 +1,24 @@
-NAME = alburena/alpine-openldap
+NAME = alburena/docker-openldap
 VERSION = 1.0.0
 
 .PHONY: build clean run up down test help
 
 build:
 	docker build -t $(NAME):$(VERSION) .
+
+tag:
+	docker tag $(NAME):$(VERSION) $(NAME):$(VERSION)
+
+tag-latest:
+	docker tag $(NAME):$(VERSION) $(NAME):latest
+
+push:
+	docker push $(NAME):$(VERSION)
+
+push-latest:
+	docker push $(NAME):latest
+
+release: build tag-latest push push-latest
 
 clean:
 	docker rm -f openldap; true

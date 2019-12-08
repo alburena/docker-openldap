@@ -2,13 +2,14 @@ version: '3.6'
 
 services:
     openldap:
-        image: alburena/alpine-openldap:1.0.0
+        image: alburena/docker-openldap:1.0.0
         container_name: openldap
         hostname: ldap.mesesale.local
+        restart: always
         ports:
             - 389:389
             - 636:636
         volumes:
-            - ../ldif:/etc/ldap/ldif_files
+            - ./ldif:/etc/ldap/ldif_files
         env_file:
             - .env
