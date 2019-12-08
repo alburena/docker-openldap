@@ -8,6 +8,7 @@ FROM debian
 # Install OpenLDAP
 RUN  apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        ca-certificates \
         openssl \
         slapd  \
         krb5-kdc-ldap  \
